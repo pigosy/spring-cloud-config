@@ -1,13 +1,9 @@
-server:
-  port: 8101
-
 spring:
   application:
-    name: user-service
+    name: order-service
 
-sp:
-  user-service:
-    users: "[{\"id\":7, \"username\":\"abc\",\"password\":\"123\"},{\"id\":8, \"username\":\"def\",\"password\":\"456\"},{\"id\":9, \"username\":\"ghi\",\"password\":\"789\"}]"
+#server:
+#  port: 8201
 
 eureka:
   client:
@@ -16,3 +12,27 @@ eureka:
     registry-fetch-interval-seconds: 30 #拉取注册信息间隔时间，默认 30 秒
   instance:
     lease-renewal-interval-in-seconds: 30 #心跳间隔时间，默认 30 秒
+
+feign:
+  hystrix:
+    enabled: true
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
+---
+spring:
+  profiles: order1
+  
+server:
+  port: 8201
+  
+---
+spring:
+  profiles: order2
+  
+server:
+  port: 8202
