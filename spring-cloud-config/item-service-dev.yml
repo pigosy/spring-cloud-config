@@ -1,10 +1,6 @@
-#server:
-#  port: 8001
-
 spring:
   application:
     name: item-service
-
 eureka:
   client:
     service-url:
@@ -12,16 +8,13 @@ eureka:
     registry-fetch-interval-seconds: 30 #拉取注册信息间隔时间，默认 30 秒
   instance:
     lease-renewal-interval-in-seconds: 30 #心跳间隔时间，默认 30 秒
-
 ---
 spring:
   profiles: item1
-  
 server:
   port: 8001
 ---
 spring:
   profiles: item2
-
 server:
   port: 8002
